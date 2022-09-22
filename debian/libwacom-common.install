@@ -1,0 +1,3 @@
+lib/udev/hwdb.d/65-libwacom.hwdb
+lib/udev/rules.d/65-libwacom.rules
+usr/share/libwacom

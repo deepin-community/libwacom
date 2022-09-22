@@ -1,0 +1,6 @@
+usr/bin/libwacom-list-devices
+usr/bin/libwacom-list-local-devices
+usr/bin/libwacom-show-stylus
+usr/bin/libwacom-update-db
+usr/share/man/man1/libwacom-list-devices.1
+usr/share/man/man1/libwacom-list-local-devices.1

@@ -1,0 +1,25 @@
+#!/usr/bin/make -f
+
+export DEB_BUILD_MAINT_OPTIONS = optimize=-lto
+
+override_dh_auto_configure:
+	dh_auto_configure -- \
+		-Dudev-dir=/lib/udev \
+		-Dtests=$(if $(filter nocheck,$(DEB_BUILD_OPTIONS)),dis,en)abled
+
+override_dh_install:
+	find debian/tmp -name '*.la' -delete
+	rm -rf debian/tmp/usr/share/libwacom/__pycache__
+	dh_install
+
+override_dh_missing:
+	dh_missing --fail-missing
+
+override_dh_strip:
+	dh_strip --dbgsym-migration='libwacom2-dbg (<< 1.1-2~)'
+	dh_strip -plibwacom-bin
+
+%:
+	dh $@ \
+		--builddirectory=build/ \
+		--buildsystem=meson
